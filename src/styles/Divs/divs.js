@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const Div = styled.div`
+export const Form = styled.form`
 
 display: inline-flex;
 

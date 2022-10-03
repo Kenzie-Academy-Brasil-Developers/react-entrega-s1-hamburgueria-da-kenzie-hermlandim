@@ -8,9 +8,7 @@ import Cart from "../Cart/Cart";
 import { Constructors } from "../Constructor/constructor";
 import Container from "../Container";
 
-function Main() {
-  const [list, setList] = useState([]);
-
+function Main({ list, setList }) {
   useEffect(() => {
     api.get("/products").then((response) => {
       console.log(response);
