@@ -4,7 +4,7 @@ import { TagConstructor } from "../../styles/Constructor/constructor";
 import { StyledTags } from "../../styles/Typography/typography";
 import ListCart from "../ListCart/ListCart";
 
-const Cart = () => {
+const Cart = ({ cart, setCart }) => {
   return (
     <>
       <StyledTags
@@ -30,7 +30,7 @@ const Cart = () => {
         width="100%"
         backgroundColor="var(--color-gray-0)"
       >
-        <ListCart />
+        <ListCart cart={cart} setCart={setCart} />
       </TagConstructor>
       <TagConstructor
         tag="div"

@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Buttons } from "../../styles/Buttons/buttons";
 import { TagConstructor } from "../../styles/Constructor/constructor";
 import { StyledTags } from "../../styles/Typography/typography";
 import { List } from "./styles";
 
-const CardList = ({ product }) => {
+const CardList = ({ product, cart, setCart }) => {
+  const addProductInCart = (elem, cart, setCart) => {
+    setCart((previousCart) => {
+      return [...previousCart, elem];
+    });
+  };
+
   return (
     <List>
       <figure>
@@ -31,7 +37,12 @@ const CardList = ({ product }) => {
         >
           R${product.price.toFixed(2)}
         </StyledTags>
-        <Buttons typeButton="card">Adicionar</Buttons>
+        <Buttons
+          typeButton="card"
+          onClick={() => addProductInCart(product, cart, setCart)}
+        >
+          Adicionar
+        </Buttons>
       </TagConstructor>
     </List>
   );

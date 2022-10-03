@@ -4,7 +4,7 @@ import { TagConstructor } from "../../styles/Constructor/constructor";
 import { StyledTags } from "../../styles/Typography/typography";
 import { List } from "./styles";
 
-const ListCart = () => {
+const ListCart = ({ cart, setCart }) => {
   return (
     <>
       <TagConstructor
@@ -23,27 +23,29 @@ const ListCart = () => {
       </StyledTags> */}
       </TagConstructor>
       <TagConstructor tag="ul">
-        <List>
-          <figure>
-            <img src="https://i.imgur.com/Vng6VzV.png" alt="" />
-          </figure>
-          <TagConstructor
-            tag="div"
-            display="flex"
-            flexDirection="column"
-            alignItems="flex-start"
-            padding="1rem"
-            gap=".75rem"
-          >
-            <StyledTags tag="h3" typography="h3">
-              Hamburger
-            </StyledTags>
-            <StyledTags tag="p" typography="caption">
-              Sanduíches
-            </StyledTags>
-          </TagConstructor>
-          <Buttons typeButton="cart-disabled">Remover</Buttons>
-        </List>
+        {cart.map((elem) => (
+          <List>
+            <figure>
+              <img src={elem.img} alt={elem.name} />
+            </figure>
+            <TagConstructor
+              tag="div"
+              display="flex"
+              flexDirection="column"
+              alignItems="flex-start"
+              padding="1rem"
+              gap=".75rem"
+            >
+              <StyledTags tag="h3" typography="h3">
+                {elem.name}
+              </StyledTags>
+              <StyledTags tag="p" typography="caption">
+                {elem.category}
+              </StyledTags>
+            </TagConstructor>
+            <Buttons typeButton="cart-disabled">Remover</Buttons>
+          </List>
+        ))}
       </TagConstructor>
     </>
   );

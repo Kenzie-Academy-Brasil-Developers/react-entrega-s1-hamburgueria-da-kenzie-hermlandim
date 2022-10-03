@@ -8,18 +8,18 @@ import logo from "../../assets/logo/logo.svg";
 import Container from "../Container";
 import { useState } from "react";
 
-const HeaderMain = ({ list, setList, setOriginalList }) => {
+const HeaderMain = ({ list, setList, originalList }) => {
   const [value, setValue] = useState("");
 
   const findProduct = (event) => {
     event.preventDefault();
     console.log(list);
     console.log(value);
-    const findFiltered = list.filter((product) =>
+    const findFiltered = originalList.filter((product) =>
       product.name.toLowerCase().includes(value.toLowerCase())
     );
     console.log(findFiltered);
-    setList(findFiltered);
+    findFiltered.length === 0 ? setList(originalList) : setList(findFiltered);
   };
   return (
     <Header>

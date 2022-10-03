@@ -15,11 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <HeaderMain
-        list={list}
-        setList={setList}
-        setOriginalList={setOriginalList}
-      />
+      <HeaderMain list={list} setList={setList} originalList={originalList} />
       <Main list={list} setList={setList} />
     </div>
   );

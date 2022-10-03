@@ -9,6 +9,9 @@ import { Constructors } from "../Constructor/constructor";
 import Container from "../Container";
 
 function Main({ list, setList }) {
+  const [cart, setCart] = useState([]);
+  console.log(setCart);
+
   useEffect(() => {
     api.get("/products").then((response) => {
       console.log(response);
@@ -39,11 +42,16 @@ function Main({ list, setList }) {
             <CardList />
             <CardList /> */}
             {list.map((card) => (
-              <CardList key={card.id} product={card} />
+              <CardList
+                key={card.id}
+                product={card}
+                cart={cart}
+                setCart={setCart}
+              />
             ))}
           </TagConstructor>
           <TagConstructor tag="aside" width="26%" tagName="aside">
-            <Cart />
+            <Cart cart={cart} setCart={setCart} />
           </TagConstructor>
         </TagConstructor>
       </Container>
