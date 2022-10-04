@@ -10,11 +10,9 @@ import Container from "../Container";
 
 function Main({ list, setList }) {
   const [cart, setCart] = useState([]);
-  console.log(setCart);
 
   useEffect(() => {
     api.get("/products").then((response) => {
-      console.log(response);
       setList(response.data);
     });
   }, []);
