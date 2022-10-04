@@ -5,6 +5,16 @@ import { StyledTags } from "../../styles/Typography/typography";
 import { List } from "./styles";
 
 const ListCart = ({ cart, setCart }) => {
+  console.log(cart);
+
+  const removeItem = (setCart, elem) => {
+    console.log(cart);
+    console.log(elem);
+    const attCart = cart.filter((newProd) => newProd.name !== elem.name);
+    console.log(attCart);
+    setCart(attCart);
+  };
+
   return (
     <>
       <TagConstructor
@@ -23,8 +33,8 @@ const ListCart = ({ cart, setCart }) => {
       </StyledTags> */}
       </TagConstructor>
       <TagConstructor tag="ul">
-        {cart.map((elem) => (
-          <List>
+        {cart.map((elem, key) => (
+          <List key={key}>
             <figure>
               <img src={elem.img} alt={elem.name} />
             </figure>
@@ -43,7 +53,12 @@ const ListCart = ({ cart, setCart }) => {
                 {elem.category}
               </StyledTags>
             </TagConstructor>
-            <Buttons typeButton="cart-disabled">Remover</Buttons>
+            <Buttons
+              typeButton="cart-disabled"
+              onClick={() => removeItem(cart, setCart, elem.name)}
+            >
+              Remover
+            </Buttons>
           </List>
         ))}
       </TagConstructor>

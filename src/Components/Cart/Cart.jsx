@@ -5,6 +5,10 @@ import { StyledTags } from "../../styles/Typography/typography";
 import ListCart from "../ListCart/ListCart";
 
 const Cart = ({ cart, setCart }) => {
+  const removeAllProducts = (setCart) => {
+    setCart([]);
+  };
+
   return (
     <>
       <StyledTags
@@ -43,10 +47,19 @@ const Cart = ({ cart, setCart }) => {
             Total
           </StyledTags>
           <StyledTags tag="span" typography="body-600">
-            R$40,00
+            R$
+            {cart.reduce(
+              (previous, current) => previous + current.price * current.count,
+              0
+            )}
           </StyledTags>
         </TagConstructor>
-        <Buttons typeButton="card-disabled">Remover Todos</Buttons>
+        <Buttons
+          typeButton="card-disabled"
+          onClick={() => removeAllProducts(setCart)}
+        >
+          Remover Todos
+        </Buttons>
       </TagConstructor>
     </>
   );

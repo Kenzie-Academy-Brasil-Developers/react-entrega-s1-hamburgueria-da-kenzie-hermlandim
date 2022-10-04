@@ -6,11 +6,22 @@ import { List } from "./styles";
 
 const CardList = ({ product, cart, setCart }) => {
   const addProductInCart = (elem, cart, setCart) => {
-    setCart((previousCart) => {
-      return [...previousCart, elem];
-    });
+    const isExistsProduct = cart.some((element) => element.id === elem.id);
+    if (isExistsProduct) {
+      const teste = cart.map((prod) => {
+        return {
+          ...prod,
+          count: prod.count + 1,
+        };
+      });
+      setCart(teste);
+    } else {
+      setCart((previousCart) => {
+        return [...previousCart, { ...elem, count: 1 }];
+      });
+    }
+    console.log(cart);
   };
-
   return (
     <List>
       <figure>
